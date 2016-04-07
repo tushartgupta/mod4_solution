@@ -98,7 +98,7 @@ function buildAndShowHomeHTML (categories) {
     homeHtmlUrl,
     function (homeHtml) {
 
-      document.querySelector("#main-content").innerHTML = homeHtml;
+      // document.querySelector("#main-content").innerHTML = homeHtml;
       // TODO: STEP 2: Here, call chooseRandomCategory, passing it retrieved 'categories'
       // Pay attention to what type of data that function returns vs what the chosenCategoryShortName
       // variable's name implies it expects.
