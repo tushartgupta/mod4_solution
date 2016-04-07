@@ -98,12 +98,17 @@ function buildAndShowHomeHTML (categories) {
     homeHtmlUrl,
     function (homeHtml) {
 
-      // document.querySelector("#main-content").innerHTML = homeHtml;
       // TODO: STEP 2: Here, call chooseRandomCategory, passing it retrieved 'categories'
       // Pay attention to what type of data that function returns vs what the chosenCategoryShortName
       // variable's name implies it expects.
       // var chosenCategoryShortName = ....
-      
+        document.querySelector("#main-content").innerHTML = homeHtml;
+
+        /*
+            By Tushar Gupta --- From the json file -> "http://davids-restaurant.herokuapp.com/categories.json";
+            We see that there is a property short_name that holds the short code we are interested in. Hence after getting
+            a random category from chooseRandomCategory we will fetch the short name.
+        */
         var chosenCategoryShortName = chooseRandomCategory(categories).short_name;
 
       // TODO: STEP 3: Substitute {{randomCategoryShortName}} in the home html snippet with the
@@ -119,13 +124,20 @@ function buildAndShowHomeHTML (categories) {
       // 
       // var homeHtmlToInsertIntoMainPage = ....
       
-        var homeHtmlToInsertIntoMainPage = insertProperty (homeHtml, "randomCategoryShortName", "'" + chosenCategoryShortName + "'");
+       /*
+
+          By Tushar Gupta ----
+
+          As indicated above, calling insertProperty function. Also, we have surrounded the Short name within quotes, so that it 
+          looks like ----- $dc.loadMenuItems('L')
+       */
+        var homeHtmlToInsertIntoMainPage = insertProperty (homeHtml,"randomCategoryShortName","'"+chosenCategoryShortName+"'");
 
       // TODO: STEP 4: Insert the the produced HTML in STEP 3 into the main page
       // Use the existing insertHtml function for that purpose. Look through this code for an example
       // of how to do that. 
       // ....
-        // insertHtml("#main-content", homeHtmlToInsertIntoMainPage);
+        insertHtml("#main-content", homeHtmlToInsertIntoMainPage);
     },
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
 }
